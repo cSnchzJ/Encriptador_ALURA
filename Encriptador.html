@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Encriptador y Desencriptador Alura</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="estilos.css"> 
+
+    </head>
+
+    <body>
+
+        <header>
+            <div class="menu">
+                <h1><img src="imagenes/Logo.png" alt="logo Alura" class="logo"></h1>
+                <ul class="cabecera">                
+                    <li><p>Desafío 1 : Encriptador de texto</p></li>                    
+                </ul>     
+            </div>                                           
+        </header>
+
+
+        <div class="cuerpo">
+            <ul class="seccion">
+                <li>
+                    <input type="text" placeholder="Ingrese texto aqui">
+                    <ul class="noAlineada">
+                        <li><button id="encriptar">Encriptar</button></li>
+                        <li><button id="desencriptar">Desencriptar</button></li>
+                    </ul>
+                </li>
+    
+                <li>
+                    <ul class="noAlineada">
+                        <li class="noAlineada"><label id="texto"><img src="imagenes/muneco.png" alt="munheco" class="muneco"></label></li>
+                        <li class="noAlineada"><button id="copiar">Copiar</button></li>
+                    </ul>
+                </li>                    
+            </ul>    
+        </div>
+        
+        <script>
+
+            var input=document.querySelector("input");
+            var button=document.querySelector("#encriptar");
+            var button2=document.querySelector("#desencriptar");
+            var button3=document.querySelector("#copiar");
+            var mensajeFinal='';
+
+            input.focus();
+
+            /*  La letra "a" es convertida para "ai"
+                La letra "e" es convertida para "enter"
+                La letra "i" es convertida para "imes"       
+                La letra "o" es convertida para "ober"
+                La letra "u" es convertida para "ufat" */
+            function encriptar(){  
+                var cadena=input.value;             
+                mensajeFinal='';
+
+                /* console.log('cadena = '+cadena.length + 'mensaje =' + cadena) */
+                for(var i=0; i<cadena.length;i++){
+                    var caracter = cadena.charAt(i);
+                    switch(caracter){
+                        case 'a': 
+                            mensajeFinal=mensajeFinal+'ai';
+                            break;
+                        case 'e': 
+                        mensajeFinal=mensajeFinal+'enter';
+                            break;
+                        case 'i': 
+                            mensajeFinal=mensajeFinal+'imes';
+                            break;
+                        case 'o': 
+                            mensajeFinal=mensajeFinal+'ober';
+                            break;
+                        case 'u': 
+                            mensajeFinal=mensajeFinal+'ufat';
+                            break;
+                        default:
+                            mensajeFinal=mensajeFinal+caracter;
+                    }
+                }                
+                document.querySelector('#texto').innerText = mensajeFinal;
+                /* document.getElementsByClassName(".muneco").style.display = "none";        esto hace que el elemento se deje de ver*/
+               /*  console.log('mensaje codificado = '+mensajeFinal)
+                console.log('mensaje decodificado = '+mensajeFinal2) */
+            }
+
+            function desencriptar(){
+
+                /* Decodificador */
+
+                /*  La letra "a" es convertida para "ai"
+                La letra "e" es convertida para "enter"
+                La letra "i" es convertida para "imes"       
+                La letra "o" es convertida para "ober"
+                La letra "u" es convertida para "ufat" */
+                var cadena=input.value;                    
+                mensajeFinal='';
+                for(var i=0; i<cadena.length;i++){
+                    var caracter = cadena.charAt(i);
+                    switch(caracter){
+                        case 'a': 
+                            mensajeFinal=mensajeFinal+'a';
+                            i=i+1;
+                            break;
+                        case 'e': 
+                            mensajeFinal=mensajeFinal+'e';
+                            i=i+4;
+                            break;
+                        case 'i': 
+                            mensajeFinal=mensajeFinal+'i';
+                            i=i+3;
+                            break;
+                        case 'o': 
+                            mensajeFinal=mensajeFinal+'o';
+                            i=i+3;
+                            break;
+                        case 'u': 
+                            mensajeFinal=mensajeFinal+'u';
+                            i=i+3;
+                            break;
+                        default:
+                            mensajeFinal=mensajeFinal+caracter;
+
+                    }
+                }
+                /* console.log(mensajeFinal2) */
+                document.querySelector('#texto').innerText = mensajeFinal;
+                
+            }
+            /* fenterlimescimesdaidenters poberr enternfrenterntair enterstenter dentersaifimesober y haibenterrlober cobernclufatimesdober cobern enterximestober! */
+
+            function copiarPortapapeles() {           
+
+                var aux = document.createElement("input");
+                aux.setAttribute("value", document.getElementById('texto').innerHTML);
+                document.body.appendChild(aux);
+                aux.select();
+                document.execCommand("copy");
+                document.body.removeChild(aux);
+                
+            }
+
+            button.onclick=encriptar;
+
+            button2.onclick=desencriptar;
+
+            button3.onclick=copiarPortapapeles;
+            
+        </script>
+
+
+
+
+        <footer>
+            <p>colocar pie de pagina</p>
+        </footer>
+
+
+
+    </body>
+</html>

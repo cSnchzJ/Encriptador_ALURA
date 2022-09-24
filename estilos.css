@@ -1,0 +1,41 @@
+body{
+    background: #E9ECF8;
+}
+
+header{
+    background: #AAB2D5;
+    padding: 20px 0;
+    margin: 0 auto;   
+}
+
+.menu{
+    width: 940px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.logo{
+    display: inline;
+}
+
+.cabecera li{
+    position: absolute;
+    top: 20px;
+    right: 0;
+    display: inline;
+    margin: 0 0 0 15px;    
+}
+
+.cuerpo{
+    width: 940px;
+    margin: 10px auto;
+    padding: 50px;
+}
+
+.seccion li{
+     display: inline-block;
+}
+
+.seccion.noAlineada{
+    display:table ;
+}
